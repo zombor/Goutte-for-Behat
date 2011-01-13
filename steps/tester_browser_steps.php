@@ -10,12 +10,12 @@
 
 $steps->Given('/^I am on(?: the)? (.*)$/', function($world, $page)
 {
-	$world->request('GET', $page);
+	$world->client->request('GET', $page);
 });
 
 $steps->When('/^I go to(?: the)? (.*)$/', function($world, $page)
 {
-	$world->request('GET', $page);
+	$world->client->request('GET', $page);
 });
 
 $steps->When('/^I (?:follow|click)(?: the)? "([^"]*)"(?: link)*$/', function($world, $link)
