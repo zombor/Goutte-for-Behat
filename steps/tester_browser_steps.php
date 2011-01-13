@@ -10,7 +10,7 @@
 
 $steps->Given('/^I am on(?: the)? (.*)$/', function($world, $page)
 {
-	$world->client->request('GET', $page);
+	$world->visit($page);
 });
 
 $steps->When('/^I go to(?: the)? (.*)$/', function($world, $page)
@@ -20,8 +20,8 @@ $steps->When('/^I go to(?: the)? (.*)$/', function($world, $page)
 
 $steps->When('/^I (?:follow|click)(?: the)? "([^"]*)"(?: link)*$/', function($world, $link)
 {
-	$link = $world->crawler->selectLink($link)->link();
-	$world->crawler = $world->client->click($link);
+	$link = $world->response->selectLink($link)->link();
+	$world->response = $world->client->click($link);
 });
 
 $steps->When('/^I go back$/', function($world)
