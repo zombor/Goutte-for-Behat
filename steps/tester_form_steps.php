@@ -35,12 +35,12 @@ $steps->When('/^I attach the file at "([^"]*)" to "([^"]*)"$/', function($world,
 
 $steps->When('/^I press "([^"]*)"$/', function($world, $button)
 {
-	$form = $world->crawler->selectButton($button)->form($world->inputFields);
-	$world->crawler = $world->client->submit($form);
+	$form = $world->response->selectButton($button)->form($world->inputFields);
+	$world->response = $world->client->submit($form);
 	$world->inputFields = array();
 });
 
 $steps->Then('/^The form should have (\d+) errors$/', function($world, $errorsCount)
 {
-	assertEquals($errorsCount, $world->crawler->filter('#errors')->children()->count());
+	assertEquals($errorsCount, $world->response->filter('#errors')->children()->count());
 });
